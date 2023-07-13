@@ -1,0 +1,18 @@
+# Create the plot
+plt.figure(figsize=(10, 6))
+
+# Plot the data for each random point
+for i in range(10):
+    random_point = random_points.iloc[i]
+    result_df130['Z_random']=-result_df130['Z_random']
+    point_data = result_df130[result_df130['X_random'] == random_point['X']]
+    plt.plot(point_data['Scale'], ((point_data['derivate_n_x_norm'])**2+(point_data['derivate_n_y_norm'])**2+(point_data['derivate_n_z_norm'])**2)*(point_data['Scale'])**2)
+
+# Customize the plot
+plt.xlabel('Rayon (µm)')
+plt.ylabel('Approximation de la courbure')
+plt.title('Approximation de la courbure en fonction du rayon - Tak1 PDMS-PC33')
+plt.legend(loc='center', bbox_to_anchor=(0.5, -0.3), ncol=2)
+
+# Show the plot
+plt.show()

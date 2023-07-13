@@ -1,0 +1,155 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+Surface_proj_130=101843750
+
+# Create an empty dataframe to store the average data
+average_df130_10 = pd.DataFrame(columns=['10% Tak1 PDMS PC33'])
+
+# Calculate the averages for each curve
+for i in range(100):
+    random_point = random_points.iloc[i]
+    point_data = result_df130[(result_df130['X_random'] == random_point['X'])&(result_df130['Scale'] >= np.sqrt(Surface_proj_130)*0) & (result_df130['Scale'] < np.sqrt(Surface_proj_130)*0.1)]
+    curve = ((point_data['derivate_n_x_norm'])**2 + (point_data['derivate_n_y_norm'])**2 + (point_data['derivate_n_z_norm'])**2) * (point_data['Scale'])**2
+    average_curve = np.mean(curve)
+    # Store the average data in the dataframe
+    average_df130_10.loc[i] = average_curve
+
+# Print the dataframe
+print(average_df130_10)
+
+# Create an empty dataframe to store the average data
+average_df130_20 = pd.DataFrame(columns=['20% Tak1 PDMS PC33'])
+
+# Calculate the averages for each curve
+for i in range(100):
+    random_point = random_points.iloc[i]
+    point_data = result_df130[(result_df130['X_random'] == random_point['X'])&(result_df130['Scale'] >= np.sqrt(Surface_proj_130)*0.1) & (result_df130['Scale'] < np.sqrt(Surface_proj_130)*0.2)]
+    curve = ((point_data['derivate_n_x_norm'])**2 + (point_data['derivate_n_y_norm'])**2 + (point_data['derivate_n_z_norm'])**2) * (point_data['Scale'])**2
+    average_curve = np.mean(curve)
+    # Store the average data in the dataframe
+    average_df130_20.loc[i] = average_curve
+
+# Print the dataframe
+print(average_df130_20)
+
+# Create an empty dataframe to store the average data
+average_df130_30 = pd.DataFrame(columns=['30% Tak1 PDMS PC33'])
+
+# Calculate the averages for each curve
+for i in range(100):
+    random_point = random_points.iloc[i]
+    point_data = result_df130[(result_df130['X_random'] == random_point['X'])&(result_df130['Scale'] >= np.sqrt(Surface_proj_130)*0.2) & (result_df130['Scale'] < np.sqrt(Surface_proj_130)*0.3)]
+    curve = ((point_data['derivate_n_x_norm'])**2 + (point_data['derivate_n_y_norm'])**2 + (point_data['derivate_n_z_norm'])**2) * (point_data['Scale'])**2
+    average_curve = np.mean(curve)
+    # Store the average data in the dataframe
+    average_df130_30.loc[i] = average_curve
+
+# Print the dataframe
+print(average_df130_30)
+
+# Create an empty dataframe to store the average data
+average_df130_40 = pd.DataFrame(columns=['40% Tak1 PDMS PC33'])
+
+# Calculate the averages for each curve
+for i in range(100):
+    random_point = random_points.iloc[i]
+    point_data = result_df130[(result_df130['X_random'] == random_point['X'])&(result_df130['Scale'] >= np.sqrt(Surface_proj_130)*0.3) & (result_df130['Scale'] < np.sqrt(Surface_proj_130)*0.4)]
+    curve = ((point_data['derivate_n_x_norm'])**2 + (point_data['derivate_n_y_norm'])**2 + (point_data['derivate_n_z_norm'])**2) * (point_data['Scale'])**2
+    average_curve = np.mean(curve)
+    # Store the average data in the dataframe
+    average_df130_40.loc[i] = average_curve
+
+# Print the dataframe
+print(average_df130_40)
+
+# Create an empty dataframe to store the average data
+average_df130_50 = pd.DataFrame(columns=['50% Tak1 PDMS PC33'])
+
+# Calculate the averages for each curve
+for i in range(100):
+    random_point = random_points.iloc[i]
+    point_data = result_df130[(result_df130['X_random'] == random_point['X'])&(result_df130['Scale'] >= np.sqrt(Surface_proj_130)*0.4) & (result_df130['Scale'] < np.sqrt(Surface_proj_130)*0.5)]
+    curve = ((point_data['derivate_n_x_norm'])**2 + (point_data['derivate_n_y_norm'])**2 + (point_data['derivate_n_z_norm'])**2) * (point_data['Scale'])**2
+    average_curve = np.mean(curve)
+    # Store the average data in the dataframe
+    average_df130_50.loc[i] = average_curve
+
+# Print the dataframe
+print(average_df130_50)
+
+# Create an empty dataframe to store the average data
+average_df130_60 = pd.DataFrame(columns=['60% Tak1 PDMS PC33'])
+
+# Calculate the averages for each curve
+for i in range(100):
+    random_point = random_points.iloc[i]
+    point_data = result_df130[(result_df130['X_random'] == random_point['X'])&(result_df130['Scale'] >= np.sqrt(Surface_proj_130)*0.5) & (result_df130['Scale'] < np.sqrt(Surface_proj_130)*0.6)]
+    curve = ((point_data['derivate_n_x_norm'])**2 + (point_data['derivate_n_y_norm'])**2 + (point_data['derivate_n_z_norm'])**2) * (point_data['Scale'])**2
+    average_curve = np.mean(curve)
+    # Store the average data in the dataframe
+    average_df130_60.loc[i] = average_curve
+
+# Print the dataframe
+print(average_df130_60)
+
+# Create an empty dataframe to store the average data
+average_df130_70 = pd.DataFrame(columns=['70% Tak1 PDMS PC33'])
+
+# Calculate the averages for each curve
+for i in range(100):
+    random_point = random_points.iloc[i]
+    point_data = result_df130[(result_df130['X_random'] == random_point['X'])&(result_df130['Scale'] >= np.sqrt(Surface_proj_130)*0.6) & (result_df130['Scale'] < np.sqrt(Surface_proj_130)*0.7)]
+    curve = ((point_data['derivate_n_x_norm'])**2 + (point_data['derivate_n_y_norm'])**2 + (point_data['derivate_n_z_norm'])**2) * (point_data['Scale'])**2
+    average_curve = np.mean(curve)
+    # Store the average data in the dataframe
+    average_df130_70.loc[i] = average_curve
+
+# Print the dataframe
+print(average_df130_70)
+
+# Create an empty dataframe to store the average data
+average_df130_80 = pd.DataFrame(columns=['80% Tak1 PDMS PC33'])
+
+# Calculate the averages for each curve
+for i in range(100):
+    random_point = random_points.iloc[i]
+    point_data = result_df130[(result_df130['X_random'] == random_point['X'])&(result_df130['Scale'] >= np.sqrt(Surface_proj_130)*0.7) & (result_df130['Scale'] < np.sqrt(Surface_proj_130)*0.8)]
+    curve = ((point_data['derivate_n_x_norm'])**2 + (point_data['derivate_n_y_norm'])**2 + (point_data['derivate_n_z_norm'])**2) * (point_data['Scale'])**2
+    average_curve = np.mean(curve)
+    # Store the average data in the dataframe
+    average_df130_80.loc[i] = average_curve
+
+# Print the dataframe
+print(average_df130_80)
+
+# Create an empty dataframe to store the average data
+average_df130_90 = pd.DataFrame(columns=['90% Tak1 PDMS PC33'])
+
+# Calculate the averages for each curve
+for i in range(100):
+    random_point = random_points.iloc[i]
+    point_data = result_df130[(result_df130['X_random'] == random_point['X'])&(result_df130['Scale'] >= np.sqrt(Surface_proj_130)*0.8) & (result_df130['Scale'] < np.sqrt(Surface_proj_130)*0.9)]
+    curve = ((point_data['derivate_n_x_norm'])**2 + (point_data['derivate_n_y_norm'])**2 + (point_data['derivate_n_z_norm'])**2) * (point_data['Scale'])**2
+    average_curve = np.mean(curve)
+    # Store the average data in the dataframe
+    average_df130_90.loc[i] = average_curve
+
+# Print the dataframe
+print(average_df130_90)
+
+# Create an empty dataframe to store the average data
+average_df130_100 = pd.DataFrame(columns=['100% Tak1 PDMS PC33'])
+
+# Calculate the averages for each curve
+for i in range(100):
+    random_point = random_points.iloc[i]
+    point_data = result_df130[(result_df130['X_random'] == random_point['X'])&(result_df130['Scale'] >= np.sqrt(Surface_proj_130)*0.9) & (result_df130['Scale'] < np.sqrt(Surface_proj_130)*1)]
+    curve = ((point_data['derivate_n_x_norm'])**2 + (point_data['derivate_n_y_norm'])**2 + (point_data['derivate_n_z_norm'])**2) * (point_data['Scale'])**2
+    average_curve = np.mean(curve)
+    # Store the average data in the dataframe
+    average_df130_100.loc[i] = average_curve
+
+# Print the dataframe
+print(average_df130_100)

@@ -1,0 +1,75 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+# Import Data from file
+df = pd.read_csv("C:/Users/Carla/Desktop/Stage-Ladhyx/Script Python pour Jordan/fichiers txt PC33-PC48 PDMS/PC33PDMSTAK1.txt",sep='\t')
+indexNames = df[ (-df['nZxy']<-300)].index
+df.drop(indexNames , inplace=True)
+
+# Random point selection
+random_points = df.sample(n=100, random_state=1)
+
+# Create an empty list to store the results
+results = []
+
+# Loop for each random point
+for i in range(100):
+    random_point = random_points.iloc[i]
+    random_x = random_point['X']
+    random_y = random_point['Y']
+    random_z = -random_point['nZxy']
+
+    # Loop for distance_threshold
+    for distance_threshold in range(50, 20001, 50):
+        # Filtering points close to the random point
+        filtered_df = df[np.sqrt((df['X'] - random_x) ** 2 + (df['Y'] - random_y) ** 2) <= distance_threshold]
+
+        # Calculate distances from the random point to the filtered points
+        distances = np.sqrt((filtered_df['X'] - random_x) ** 2 + (filtered_df['Y'] - random_y) ** 2 + (-filtered_df['nZxy'] - random_z) ** 2)
+        # Average plan calculation
+        A = filtered_df['X']
+        B = filtered_df['Y']
+        C = -filtered_df['nZxy']
+
+        # Creating the data matrix
+        onesVec = np.ones(len(C))
+        data_matrix = np.column_stack((A, B, onesVec))
+
+        # Calculating plan coefficients
+        coefficients = np.linalg.lstsq(data_matrix, C, rcond=None)[0]
+
+        # Equation of the plane: Ax + By + Cz + D = 0
+        A_plan, B_plan, D_plan = coefficients[:3]
+        C_plan = 1.0
+
+        # Calculate the normal vector to the plane
+        normal_vector = np.array([-A_plan, -B_plan, 1])
+        normalized_normal_vector = normal_vector / np.linalg.norm(normal_vector)
+
+        vertical_vector = np.array([0, 0, 1])  # Vertical vector
+        angle = np.arccos(np.dot(normal_vector, vertical_vector) /
+                          (np.linalg.norm(normal_vector) * np.linalg.norm(vertical_vector)))
+        angle_degrees = np.degrees(angle)
+
+        # X and y components of the normal vector
+        normal_vector_x_norm = -A_plan / np.linalg.norm(normal_vector)
+        normal_vector_y_norm = -B_plan / np.linalg.norm(normal_vector)
+        normal_vector_z_norm = 1 / np.linalg.norm(normal_vector)
+
+        # Store the results in a dictionary
+        result = {'Scale': distance_threshold,
+                  'Angle': angle_degrees,
+                  'X_random': random_x,
+                  'Y_random': random_y,
+                  'Z_random': random_z,
+                  'n_x_norm': normal_vector_x_norm,
+                  'n_y_norm': normal_vector_y_norm,
+                  'n_z_norm': normal_vector_z_norm}
+
+        # Add the dictionary to the list of results
+        results.append(result)
+
+# Create a DataFrame from the results
+result_df = pd.DataFrame(results)
+result_df

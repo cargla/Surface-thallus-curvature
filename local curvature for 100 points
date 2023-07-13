@@ -73,3 +73,15 @@ for i in range(100):
 # Create a DataFrame from the results
 result_df = pd.DataFrame(results)
 result_df
+
+# Calculate the derivative of 'n_x_norm' and 'n_y_norm' with respect to 'Scale'
+derivative_n_x = np.gradient(result_df['n_x_norm'], result_df['Scale'])
+derivative_n_y = np.gradient(result_df['n_y_norm'], result_df['Scale'])
+derivative_n_z = np.gradient(result_df['n_z_norm'], result_df['Scale'])
+
+# Create new columns 'derivate_n_x_norm' and 'derivate_n_y_norm' in the DataFrame
+result_df['derivate_n_x_norm'] = derivative_n_x
+result_df['derivate_n_y_norm'] = derivative_n_y
+result_df['derivate_n_z_norm'] = derivative_n_z
+
+result_df
